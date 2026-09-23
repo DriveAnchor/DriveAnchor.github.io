@@ -221,6 +221,19 @@ body {
   margin-top: 0.5rem;
 }
 
+.video-feature {
+  margin-top: 1.5rem;
+}
+
+.video-feature .video-card {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.video-feature .video-label {
+  font-size: 1.1rem;
+}
+
 .video-card video {
   display: block;
   width: 100%;
