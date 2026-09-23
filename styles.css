@@ -47,6 +47,13 @@ body {
   border-radius: 10px;
 }
 
+.site-logo {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+}
+
 .publication-title {
   font-family: 'Google Sans', sans-serif;
 }
@@ -228,6 +235,20 @@ body {
   border: 1px solid #bbb;
   border-radius: 10px;
   background: #000;
+}
+
+.speed-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 0.6rem;
+}
+
+.speed-controls .button {
+  height: 1.9em;
+  padding: 0 0.7em;
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
 }
 
 .video-label {
