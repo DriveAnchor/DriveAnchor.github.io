@@ -222,16 +222,71 @@ body {
 }
 
 .video-feature {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .video-feature .video-card {
-  max-width: 620px;
+  max-width: 360px;
   margin: 0 auto;
 }
 
 .video-feature .video-label {
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+
+.feature-text .title.is-4 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.feature-text .content {
+  text-align: left;
+}
+
+.feature-text .content p {
+  margin-bottom: 0.9rem;
+}
+
+.content ul.feature-facts {
+  margin: 0.5rem 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.feature-facts li {
+  padding-left: 1.1em;
+  margin-bottom: 0.35rem;
+  position: relative;
+}
+
+.feature-facts li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #363636;
+}
+
+.feature-facts b {
+  color: #000;
+  margin-right: 0.3em;
+}
+
+@media (max-width: 768px) {
+  .feature-text .title.is-4,
+  .feature-text .content {
+    text-align: center;
+  }
+  .feature-facts li {
+    text-align: left;
+  }
+  .video-feature .video-card {
+    max-width: 320px;
+  }
 }
 
 .video-card video {
