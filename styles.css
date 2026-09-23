@@ -350,8 +350,14 @@ body {
   fill: currentColor;
 }
 
+/* The full-screen icon is stroke-only; keep it from being filled. */
+.pb-full svg {
+  fill: none;
+}
+
 .pb-seek {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
   height: 4px;
   margin: 0 0.2rem;
   appearance: none;

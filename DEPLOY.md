@@ -88,7 +88,8 @@ are, without a Jekyll build.
 - Keep GitHub Issues, Discussions, and social previews disabled unless needed.
 - Do not add analytics, trackers, personal domains, author names, local paths,
   acknowledgements, or non-anonymous code links during double-blind review.
-- Replace the placeholder `DriveAnchor-XXXX` code URL only with an anonymous
-  repository URL approved for the submission.
+- The Code button points to the anonymous repository
+  `https://anonymous.4open.science/r/700a25db-5742-4001-845c-6858d5c86459/`.
+  Replace it only with another anonymous URL during review.
 - After the review period, the organization can be renamed or transferred; the
   Pages URL follows the organization name.
