@@ -47,13 +47,6 @@ body {
   border-radius: 10px;
 }
 
-.site-logo {
-  display: block;
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-}
-
 .publication-title {
   font-family: 'Google Sans', sans-serif;
 }
@@ -237,18 +230,41 @@ body {
   background: #000;
 }
 
-.speed-controls {
-  display: flex;
-  justify-content: center;
-  gap: 0.35rem;
-  margin-top: 0.6rem;
+.video-card {
+  position: relative;
 }
 
-.speed-controls .button {
-  height: 1.9em;
-  padding: 0 0.7em;
+.speed-badge {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 1;
+  min-width: 2.6em;
+  padding: 0.15em 0.6em;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
+  line-height: 1.5;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.15s ease, background 0.15s ease;
+}
+
+.speed-badge:hover,
+.speed-badge:focus-visible {
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.75);
+  outline: none;
+}
+
+.speed-badge.is-active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.92);
+  color: #363636;
 }
 
 .video-label {
