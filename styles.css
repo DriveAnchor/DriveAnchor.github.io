@@ -225,46 +225,226 @@ body {
   display: block;
   width: 100%;
   height: auto;
-  border: 1px solid #bbb;
   border-radius: 10px;
   background: #000;
 }
 
-.video-card {
+/* In-video player chrome (built by static/js/player.js) */
+.player {
   position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+  outline: none;
 }
 
-.speed-badge {
-  position: absolute;
-  top: 0.6rem;
-  right: 0.6rem;
-  z-index: 1;
-  min-width: 2.6em;
-  padding: 0.15em 0.6em;
+.player video {
+  display: block;
+  width: 100%;
+  height: auto;
   border: 0;
-  border-radius: 999px;
+  border-radius: 0;
+  cursor: pointer;
+}
+
+.player.is-fullscreen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+}
+
+.player.is-fullscreen video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pb-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
   background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: background 0.15s ease;
+}
+
+.pb-center svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 3px;
+  fill: currentColor;
+}
+
+.pb-center:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.player.is-paused .pb-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-bar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.6rem 0.6rem 0.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0));
   color: #fff;
   font-family: 'Google Sans', 'Noto Sans', sans-serif;
   font-size: 0.8rem;
   font-variant-numeric: tabular-nums;
-  line-height: 1.5;
-  cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.15s ease, background 0.15s ease;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.speed-badge:hover,
-.speed-badge:focus-visible {
+.player.is-paused .player-bar,
+.player.is-active .player-bar,
+.player:focus-within .player-bar {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.75);
+}
+
+@media (hover: none) {
+  .player-bar { opacity: 1; }
+}
+
+.pb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  height: 28px;
+  min-width: 28px;
+  padding: 0 0.3rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  cursor: pointer;
+}
+
+.pb-btn:hover,
+.pb-btn:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
   outline: none;
 }
 
-.speed-badge.is-active {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.92);
-  color: #363636;
+.pb-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.pb-seek {
+  flex: 1;
+  height: 4px;
+  margin: 0 0.2rem;
+  appearance: none;
+  -webkit-appearance: none;
+  border-radius: 2px;
+  background: linear-gradient(to right, #fff var(--p, 0%), rgba(255, 255, 255, 0.35) var(--p, 0%));
+  cursor: pointer;
+}
+
+.pb-seek::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.pb-seek::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.pb-seek::-moz-range-track {
+  height: 4px;
+  background: transparent;
+}
+
+.pb-time {
+  flex: none;
+  padding: 0 0.2rem;
+  white-space: nowrap;
+  opacity: 0.95;
+}
+
+.pb-speed {
+  position: relative;
+  flex: none;
+}
+
+.pb-speed-btn {
+  min-width: 2.8em;
+  font-weight: 500;
+}
+
+.pb-speed-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 6px);
+  display: none;
+  min-width: 4.6em;
+  padding: 0.25rem;
+  border-radius: 8px;
+  background: rgba(20, 20, 20, 0.94);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+}
+
+.pb-speed-menu.is-open {
+  display: block;
+}
+
+.pb-speed-menu button {
+  display: block;
+  width: 100%;
+  padding: 0.3rem 0.7rem;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.pb-speed-menu button:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.pb-speed-menu button[aria-checked="true"] {
+  font-weight: 600;
+}
+
+.pb-speed-menu button[aria-checked="true"]::before {
+  content: "✓ ";
+}
+
+.pb-speed-menu button[aria-checked="false"]::before {
+  content: "";
+  display: inline-block;
+  width: 1.1em;
 }
 
 .video-label {
