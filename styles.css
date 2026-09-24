@@ -226,7 +226,7 @@ body {
 }
 
 .video-feature .video-card {
-  max-width: 360px;
+  max-width: 440px;
   margin: 0 auto;
 }
 
@@ -285,7 +285,7 @@ body {
     text-align: left;
   }
   .video-feature .video-card {
-    max-width: 320px;
+    max-width: 360px;
   }
 }
 
