@@ -64,9 +64,12 @@ gh release upload media-v1 assets/videos/<clip>.mp4 \
   --repo DriveAnchor/DriveAnchor.github.io --clobber
 ```
 
-The clips in `assets/videos/` are H.264 at about 1.8 Mbps with the MP4 index
-at the front (streamable). Untouched originals are kept outside the repository
-in `../video_originals/`.
+The clips in `assets/videos/` are the untouched originals (H.264, about 3 to
+5 Mbps, MP4 index at the front). Release assets carry `-hq`/`-orig` suffixes
+because a re-upload under an unchanged name kept being served from caches.
+Backup copies of the originals live outside the repository in
+`../video_originals/`; Construction zone I is cut from the 136-s original at
+20 s without re-encoding.
 
 ## 3. Publish the site
 
