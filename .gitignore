@@ -5,5 +5,4 @@
 assets/videos/full-deployment.mp4
 
 # Unused source media and intermediate frames are not part of the public site.
-assets/videos/construction-zone.mp4
 assets/video_frames/
