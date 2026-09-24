@@ -1,3 +1,34 @@
+// Teaser autoplay fallback for mobile browsers (iOS Low Power Mode, WeChat/X5,
+// data-saver): if muted autoplay is blocked, start on the first touch or click.
+(function () {
+  var teaser = document.getElementById('teaser');
+  if (!teaser) return;
+  teaser.muted = true;
+  teaser.defaultMuted = true;
+  function tryPlay() {
+    var p = teaser.play();
+    if (p && typeof p.catch === 'function') p.catch(function () {});
+  }
+  function armGesture() {
+    var once = function () {
+      tryPlay();
+      ['touchend', 'click', 'scroll'].forEach(function (ev) { document.removeEventListener(ev, once); });
+    };
+    ['touchend', 'click', 'scroll'].forEach(function (ev) { document.addEventListener(ev, once, { passive: true }); });
+  }
+  var p = teaser.play();
+  if (p && typeof p.then === 'function') {
+    p.catch(armGesture);
+  }
+  // Some browsers resolve play() but never advance; re-check after the data arrives.
+  teaser.addEventListener('loadeddata', function () {
+    setTimeout(function () { if (teaser.paused) { tryPlay(); armGesture(); } }, 800);
+  });
+  document.addEventListener('visibilitychange', function () {
+    if (!document.hidden && teaser.paused) tryPlay();
+  });
+})();
+
 // In-video control bar for every clip in the deployment grid:
 // play/pause, seek, time, playback speed, and full screen.
 // Native controls remain as a fallback if this script does not run.

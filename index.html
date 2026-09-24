@@ -60,7 +60,7 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline poster="assets/video_posters/short-lane-change.jpg" width="880" height="1014">
+      <video id="teaser" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5-page" preload="auto" poster="assets/video_posters/short-lane-change.jpg" width="880" height="1014">
         <source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/short-lane-change.mp4" type="video/mp4"><source src="assets/videos/short-lane-change.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
@@ -79,7 +79,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>Autonomous-driving planners must generate route- and maneuver-compliant trajectories under a limited decoder-call budget while adapting offline to black-box static-collision feedback. We propose <span class="dnerf">DriveAnchor</span>, a three-stage framework built around a shared vocabulary of recorded trajectories and a continuous trajectory interface. The vocabulary supports flow-matching (FM) residual learning, Energy Field (EF) corridor-conditioned initialization, and anchor-guided zeroth-order reward fine-tuning. The reward update operates in trajectory space without policy likelihoods or reward gradients, enabling offline adaptation of a deterministic decoder.</p>
-          <p>On 100-scenario subsets of nuPlan Val14 and Test14-hard per simulation mode, DriveAnchor achieves the highest reactive scores among the compared methods: 81.50 and 65.74, respectively. We further integrate the trajectory generator into a real vehicle's planning pipeline and demonstrate its operation on urban roads. In a separate junction diagnostic, increasing EF initialization from zero to two calls raises final-output corridor-guidance satisfaction from 62.02% to 73.42%, with two reward-fine-tuned FM calls fixed. On 10,000 held-out internal scenarios, under the original non-EF prior and a fixed two-call FM budget, reward fine-tuning reduces short- and long-horizon static candidate collision rates from 27.22% and 56.54% to 2.94% and 7.15%, respectively, and improves 8-s best-of-set minADE from 2.27 to 1.34 m. Additional ablations support the benefits of anchor-guided exploration and real-trajectory priors. In real-vehicle tests, trajectory generation takes 2.06 ms on average.</p>
+          <p>On 100-scenario subsets of nuPlan Val14 and Test14-hard per simulation mode, DriveAnchor achieves the highest reactive scores among the compared methods: 81.50 and 65.74, respectively. We further integrate the trajectory generator into a real vehicle's planning pipeline and demonstrate its operation on urban roads. On 10,000 held-out internal scenarios, under the original non-EF prior and a fixed two-call FM budget, reward fine-tuning reduces short- and long-horizon static candidate collision rates from 27.22% and 56.54% to 2.94% and 7.15%, respectively, and improves 8-s best-of-set minADE from 2.27 to 1.34 m. In a separate junction diagnostic on checkpoints before Stage 3, one and two EF calls raise corridor-guidance satisfaction from 22.10% to 74.13% and 87.92%, respectively. Additional ablations support the benefits of real-trajectory priors and anchor-guided exploration. In real-vehicle tests, trajectory generation takes 2.06 ms on average.</p>
         </div>
       </div>
     </div>
