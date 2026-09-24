@@ -52,7 +52,21 @@ https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/
 ```
 
 In `index.html`, replace `assets/videos/full-deployment.mp4` with that URL. It
-appears once, in the last card of the Real-vehicle Deployment grid.
+appears once, in the featured block below the Real-vehicle Deployment grid.
+
+The nine short clips are also attached to the same `media-v1` Release and are
+listed as the first `<source>` of each `<video>`, with the repository copy as
+the second `<source>` fallback. Release assets are served from a different CDN
+than GitHub Pages and loaded noticeably faster in testing. To refresh a clip:
+
+```bash
+gh release upload media-v1 assets/videos/<clip>.mp4 \
+  --repo DriveAnchor/DriveAnchor.github.io --clobber
+```
+
+The clips in `assets/videos/` are H.264 at about 1.8 Mbps with the MP4 index
+at the front (streamable). Untouched originals are kept outside the repository
+in `../video_originals/`.
 
 ## 3. Publish the site
 

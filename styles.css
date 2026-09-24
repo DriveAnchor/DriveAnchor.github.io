@@ -328,40 +328,6 @@ body {
   object-fit: contain;
 }
 
-.pb-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  display: none;
-  width: 64px;
-  height: 64px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  cursor: pointer;
-  transform: translate(-50%, -50%);
-  transition: background 0.15s ease;
-}
-
-.pb-center svg {
-  width: 30px;
-  height: 30px;
-  margin-left: 3px;
-  fill: currentColor;
-}
-
-.pb-center:hover {
-  background: rgba(0, 0, 0, 0.75);
-}
-
-.player.is-paused .pb-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .player-bar {
   position: absolute;
   right: 0;

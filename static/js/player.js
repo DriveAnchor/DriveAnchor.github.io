@@ -34,7 +34,6 @@
     var label = (video.getAttribute('aria-label') || video.closest('.video-card').querySelector('.video-label')?.textContent || 'video').trim();
 
     player.insertAdjacentHTML('beforeend',
-      '<button type="button" class="pb-center" aria-label="Play ' + label + '">' + ICONS.play + '</button>' +
       '<div class="player-bar">' +
         '<button type="button" class="pb-btn pb-play" aria-label="Play">' + ICONS.play + '</button>' +
         '<input type="range" class="pb-seek" min="0" max="1000" step="1" value="0" aria-label="Seek">' +
@@ -48,7 +47,6 @@
         '<button type="button" class="pb-btn pb-full" aria-label="Full screen">' + ICONS.full + '</button>' +
       '</div>');
 
-    var center = player.querySelector('.pb-center');
     var playBtn = player.querySelector('.pb-play');
     var seek = player.querySelector('.pb-seek');
     var cur = player.querySelector('.pb-cur');
@@ -92,9 +90,9 @@
       if (!video.paused) hideTimer = setTimeout(function () { player.classList.remove('is-active'); closeMenu(); }, 2200);
     }
 
-    center.addEventListener('click', toggle);
     playBtn.addEventListener('click', toggle);
     video.addEventListener('click', toggle);
+    video.setAttribute('aria-label', label);
 
     video.addEventListener('play', function () {
       player.classList.remove('is-paused');
@@ -167,6 +165,22 @@
         fullBtn.setAttribute('aria-label', on ? 'Exit full screen' : 'Full screen');
       });
     });
+
+    // Clips start with preload="none" so the page does not fetch nine videos at once.
+    // Fetch metadata (duration, first frame) only once a clip scrolls near the viewport.
+    if ('IntersectionObserver' in window && video.preload === 'none') {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          io.disconnect();
+          if (video.paused && video.readyState === 0) {
+            video.preload = 'metadata';
+            video.load();
+          }
+        });
+      }, { rootMargin: '250px 0px' });
+      io.observe(player);
+    }
 
     player.addEventListener('pointermove', showBar);
     player.addEventListener('pointerleave', function () {

@@ -10,7 +10,9 @@
   <link rel="apple-touch-icon" sizes="180x180" href="static/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
+  <!-- Web fonts load without blocking first paint; system fonts show until they arrive. -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="static/css/bulma.min.css">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -59,7 +61,7 @@
   <div class="container is-max-desktop">
     <div class="hero-body">
       <video id="teaser" autoplay muted loop playsinline poster="assets/video_posters/short-lane-change.jpg" width="880" height="1014">
-        <source src="assets/videos/short-lane-change.mp4" type="video/mp4">
+        <source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/short-lane-change.mp4" type="video/mp4"><source src="assets/videos/short-lane-change.mp4" type="video/mp4">
       </video>
       <h2 class="subtitle has-text-centered">
         <span class="dnerf">DriveAnchor</span> generates route- and maneuver-compliant trajectories from a shared anchor vocabulary and runs on a real vehicle in urban traffic.
@@ -177,7 +179,7 @@
       <div class="column is-full-width">
         <h3 class="title is-4">Qualitative results</h3>
         <div class="content">
-          <img src="assets/images/residual-screening.png" width="1600" height="1017" loading="lazy" decoding="async" alt="Residual-screened top-50 candidate trajectories at one junction under four configurations">
+          <img src="assets/images/residual-screening.jpg" width="1600" height="1017" loading="lazy" decoding="async" alt="Residual-screened top-50 candidate trajectories at one junction under four configurations">
           <p class="figure-caption"><b>Figure 2:</b> Residual-screened top-50 candidates before the downstream selector under four configurations at the same junction. These illustrate the candidate subset, not final closed-loop outcomes.</p>
         </div>
       </div>
@@ -197,15 +199,15 @@
     </div>
 
     <div class="columns is-multiline is-centered video-grid">
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/lane-change.jpg"><source src="assets/videos/lane-change.mp4" type="video/mp4"></video><p class="video-label">Lane change</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/short-lane-change.jpg"><source src="assets/videos/short-lane-change.mp4" type="video/mp4"></video><p class="video-label">Short-window lane change</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/multi-lane-change.jpg"><source src="assets/videos/multi-lane-change.mp4" type="video/mp4"></video><p class="video-label">Multi-lane change</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/pedestrian-crossing.jpg"><source src="assets/videos/pedestrian-crossing.mp4" type="video/mp4"></video><p class="video-label">Pedestrian crossing</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/non-motorized-crossing.jpg"><source src="assets/videos/non-motorized-crossing.mp4" type="video/mp4"></video><p class="video-label">Non-motorized road-user crossing</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1012" poster="assets/video_posters/parallel-left-turn.jpg"><source src="assets/videos/parallel-left-turn.mp4" type="video/mp4"></video><p class="video-label">Parallel left turn</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1012" poster="assets/video_posters/u-turn.jpg"><source src="assets/videos/u-turn.mp4" type="video/mp4"></video><p class="video-label">U-turn</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1012" poster="assets/video_posters/construction-zone.jpg"><source src="assets/videos/edited/construction-zone-from-20s.mp4" type="video/mp4"></video><p class="video-label">Construction zone I</p></div></div>
-      <div class="column is-one-third"><div class="video-card"><video controls preload="metadata" playsinline width="880" height="1010" poster="assets/video_posters/construction-zone-2.jpg"><source src="assets/videos/construction-zone-2.mp4" type="video/mp4"></video><p class="video-label">Construction zone II</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/lane-change.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/lane-change.mp4" type="video/mp4"><source src="assets/videos/lane-change.mp4" type="video/mp4"></video><p class="video-label">Lane change</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/short-lane-change.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/short-lane-change.mp4" type="video/mp4"><source src="assets/videos/short-lane-change.mp4" type="video/mp4"></video><p class="video-label">Short-window lane change</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/multi-lane-change.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/multi-lane-change.mp4" type="video/mp4"><source src="assets/videos/multi-lane-change.mp4" type="video/mp4"></video><p class="video-label">Multi-lane change</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/pedestrian-crossing.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/pedestrian-crossing.mp4" type="video/mp4"><source src="assets/videos/pedestrian-crossing.mp4" type="video/mp4"></video><p class="video-label">Pedestrian crossing</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/non-motorized-crossing.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/non-motorized-crossing.mp4" type="video/mp4"><source src="assets/videos/non-motorized-crossing.mp4" type="video/mp4"></video><p class="video-label">Non-motorized road-user crossing</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1012" poster="assets/video_posters/parallel-left-turn.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/parallel-left-turn.mp4" type="video/mp4"><source src="assets/videos/parallel-left-turn.mp4" type="video/mp4"></video><p class="video-label">Parallel left turn</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1012" poster="assets/video_posters/u-turn.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/u-turn.mp4" type="video/mp4"><source src="assets/videos/u-turn.mp4" type="video/mp4"></video><p class="video-label">U-turn</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1012" poster="assets/video_posters/construction-zone.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/construction-zone-1.mp4" type="video/mp4"><source src="assets/videos/edited/construction-zone-from-20s.mp4" type="video/mp4"></video><p class="video-label">Construction zone I</p></div></div>
+      <div class="column is-one-third"><div class="video-card"><video controls preload="none" playsinline width="880" height="1010" poster="assets/video_posters/construction-zone-2.jpg"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/construction-zone-2.mp4" type="video/mp4"><source src="assets/videos/construction-zone-2.mp4" type="video/mp4"></video><p class="video-label">Construction zone II</p></div></div>
     </div>
 
     <div class="columns is-centered is-vcentered video-feature">
@@ -224,7 +226,7 @@
       </div>
       <div class="column is-4">
         <div class="video-card">
-          <video controls preload="metadata" playsinline width="880" height="1014" poster="assets/video_posters/full-deployment.jpg" aria-label="Full 41-minute deployment drive"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/full-deployment.mp4" type="video/mp4"></video>
+          <video controls preload="none" playsinline width="880" height="1014" poster="assets/video_posters/full-deployment.jpg" aria-label="Full 41-minute deployment drive"><source src="https://github.com/DriveAnchor/DriveAnchor.github.io/releases/download/media-v1/full-deployment.mp4" type="video/mp4"></video>
           <p class="video-label">Full 41-minute deployment drive</p>
         </div>
       </div>
