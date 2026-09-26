@@ -73,12 +73,13 @@ Backup copies of the originals live outside the repository in
 
 ## 3. Publish the site
 
-Configure Git to use GitHub's anonymous noreply address, then push:
+Configure Git with an author address that is not registered on GitHub, so the
+commits are not linked to any account profile, then push:
 
 ```bash
 git init -b main
 git config user.name "DriveAnchor"
-git config user.email "ANONYMOUS_USER@users.noreply.github.com"
+git config user.email "anonymous@driveanchor.invalid"
 git add .
 git commit -m "Publish anonymous DriveAnchor project page"
 git remote add origin https://github.com/DriveAnchor/DriveAnchor.github.io.git
@@ -99,7 +100,7 @@ are, without a Jekyll build.
 
 ## 4. Final anonymity checks
 
-- Open the site in a private browser window and test all videos and the PDF.
+- Open the site in a private browser window and test all videos.
 - Check the repository commit author, the organization page, and the account
   profile for identity leakage.
 - Keep GitHub Issues, Discussions, and social previews disabled unless needed.
